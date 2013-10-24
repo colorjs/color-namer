@@ -1,0 +1,30 @@
+{
+  "name": "color-namer",
+  "version": "0.1.0",
+  "description": "Give me a color and I'll name it.",
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha"
+  },
+  "keywords": [
+    "color",
+    "names",
+    "rgb",
+    "hsl",
+    "hsv",
+    "lab",
+    "search",
+    "tagging",
+    "image",
+    "design"
+  ],
+  "author": "zeke",
+  "license": "WTFPL",
+  "devDependencies": {
+    "mocha": "~1.13.0"
+  },
+  "dependencies": {
+    "chroma-js": "~0.5.2",
+    "euclidean-distance": "~0.1.0"
+  }
+}
