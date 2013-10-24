@@ -18,7 +18,11 @@
     "image",
     "design"
   ],
-  "author": "zeke",
+  "author": {
+    "name": "Zeke Sikelianos",
+    "email": "zeke@sikelianos.com",
+    "url": "http://zeke.sikelianos.com/"
+  },
   "license": "WTFPL",
   "devDependencies": {
     "mocha": "~1.13.0"
@@ -26,5 +30,13 @@
   "dependencies": {
     "chroma-js": "~0.5.2",
     "euclidean-distance": "~0.1.0"
-  }
+  },
+  "bugs": {
+    "url": "https://github.com/zeke/color-namer/issues"
+  },
+  "homepage": "https://github.com/zeke/color-namer.js",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/zeke/color-namer.git"
+  },
 }
