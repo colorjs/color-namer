@@ -27,7 +27,7 @@ var names = namer("#FF0000");
 
 The function returns an array of colors, sorted by proximity:
 
-```
+```js
 [
   { name: 'red',
     hex: '#FF0000',
