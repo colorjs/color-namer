@@ -1,6 +1,6 @@
 {
   "name": "color-namer",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Give me a color and I'll name it.",
   "main": "index.js",
   "scripts": {
@@ -34,7 +34,7 @@
   "bugs": {
     "url": "https://github.com/zeke/color-namer/issues"
   },
-  "homepage": "https://github.com/zeke/color-namer.js",
+  "homepage": "https://github.com/zeke/color-namer",
   "repository": {
     "type": "git",
     "url": "git://github.com/zeke/color-namer.git"
