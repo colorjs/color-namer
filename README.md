@@ -76,13 +76,18 @@ To use the [HTML color names](/lib/html-colors.js):
 namer("#FF0000", 'html')
 ```
 
+Or good ol' [ROYGBIV](http://en.wikipedia.org/wiki/Roy_G._Biv):
+
+```js
+namer("#FF0000", 'roygbiv')
+```
+
 Or bring your own name data:
 
 ```js
-namer("#FF000", [
-  { name: 'aqua', hex: '#00FFFF' },
-  { name: 'aliceblue', hex: '#F0F8FF' },
-  { name: 'antiquewhite', hex: '#FAEBD7' }
+namer("#FF0000", [
+  { name: 'black', hex: '#000' },
+  { name: 'white', hex: '#FFF' }
 ])
 ```
 

@@ -1,8 +1,9 @@
 "use strict";
 
 var presets = {
-  basic: require('./lib/basic-colors'),
-  html: require('./lib/html-colors')
+  basic: require('./lib/colors/basic'),
+  roygbiv: require('./lib/colors/roygbiv'),
+  html: require('./lib/colors/html')
 }
 var distance = require('euclidean-distance')
 var chroma = require('chroma-js')
