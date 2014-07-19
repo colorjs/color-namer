@@ -18,6 +18,7 @@ function update() {
   })
 
   window.location.hash = chroma(color).hex();
+  document.title = "Names for " + chroma(color).hex();
 
   $("input").css({
     color: (chroma(color).luminance() > 0.5) ? "black" : "white"
