@@ -4,7 +4,8 @@
   "description": "Give me a color and I'll name it.",
   "main": "index.js",
   "scripts": {
-    "test": "mocha"
+    "test": "mocha",
+    "build": "browserify index.js --standalone colorNamer > dist/color-namer.js"
   },
   "keywords": [
     "color",
@@ -25,6 +26,7 @@
   },
   "license": "WTFPL",
   "devDependencies": {
+    "browserify": "^4.2.1",
     "mocha": "~1.13.0"
   },
   "dependencies": {

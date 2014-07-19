@@ -21,68 +21,76 @@ npm install color-namer --save
 Easy peasy:
 
 ```js
-var namer = require('color-namer');
-var names = namer("#FF0000");
+var namer = require('color-namer')
+var names = namer("#FF0000")
 ```
 
-The function returns an array of colors, sorted by proximity:
+The function returns an array of colors objects, sorted by proximity in the [L*a*b* color space](http://en.wikipedia.org/wiki/Lab_color_space):
 
 ```js
 [
   { name: 'red',
     hex: '#FF0000',
-    distance: 0 },
-  { name: 'orangered',
+    distance: 0
+  },{
+    name: 'orangered',
     hex: '#FF4500',
-    distance: 13.170205025755513 },
-  { name: 'tomato',
+    distance: 13.170205025755513
+  },{
+    name: 'tomato',
     hex: '#FF6347',
-    distance: 31.733444038510665 },
-  { name: 'crimson',
+    distance: 31.733444038510665
+  },{
+    name: 'crimson',
     hex: '#DC143C',
-    distance: 35.38084849496472 },
-  { name: 'firebrick',
+    distance: 35.38084849496472
+  },{
+    name: 'firebrick',
     hex: '#B22222',
-    distance: 40.71076805218006 },
-  { name: 'coral',
+    distance: 40.71076805218006
+  },{
+    name: 'coral',
     hex: '#FF7F50',
-    distance: 42.340752375722616 },
-  { name: 'chocolate',
+    distance: 42.340752375722616
+  },{
+    name: 'chocolate',
     hex: '#D2691E',
-    distance: 44.378454180212145 },
-  { name: 'darkred',
-    hex: '#8B0000',
-    distance: 46.37258642138143 },
-  { name: 'darkorange',
-    hex: '#FF8C00',
-    distance: 46.9522874117045 },
-  { name: 'brown',
-    hex: '#A52A2A',
-    distance: 50.15162168414592 },
-  { name: 'maroon',
-    hex: '#800000',
-    distance: 51.42076545740547 },
-  { name: 'salmon',
-    hex: '#FA8072',
-    distance: 53.52177627659905 },
-  "... et cetera"
+    distance: 44.378454180212145
+  }
 ]
+```
+
+## Sets
+
+By default, names are chosen from a small set of [basic colors](/lib/basic-colors.js).
+
+```js
+// These are equivalent:
+namer("#FF0000")
+namer("#FF0000", 'basic')
+```
+
+To use the [HTML color names](/lib/html-colors.js):
+
+```js
+namer("#FF0000", 'html')
+```
+
+Or bring your own name data:
+
+```js
+namer("#FF000", [
+  { name: 'aqua', hex: '#00FFFF' },
+  { name: 'aliceblue', hex: '#F0F8FF' },
+  { name: 'antiquewhite', hex: '#FAEBD7' }
+])
 ```
 
 ## Tests
 
 ```
+npm install
 npm test
-
-✓ is a function
-✓ returns an array of candidates with distance values
-✓ defaults to HTML color candidates
-✓ accepts custom color candidates
-✓ validates format of custom candidates
-✓ matches inexact colors
-✓ matches exact colors
-✓ accepts hex strings that include a hash symbol
-✓ accepts non-hex input formats
 ```
 
 ## License

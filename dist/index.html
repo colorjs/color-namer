@@ -1,0 +1,96 @@
+<script src="color-namer.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/ICanHaz.js/0.10.3/ICanHaz.min.js"></script>
+
+<script id="color" type="text/html">
+  <li>
+    <div class="swatch" style="background-color:{{hex}}"></div>
+    <div class="name">{{name}}</div>
+  </li>
+</script>
+
+<html>
+  <head>
+    <title>Color Namer</title>
+
+    <script>
+
+      function update() {
+        $("#colors").text("")
+        var color = $("#query").val()
+        var colors = colorNamer(color, 'html')
+        colors.forEach(function(color) {
+          $("#colors").append(ich.color(color))
+        })
+        console.log(colors)
+      }
+
+      $(function(){
+        $("#query").on('keyup', update)
+        $("#query").on('change', update)
+
+      })
+
+    </script>
+
+    <style media="screen">
+      body {
+        padding: 20px;
+        font-family: "helvetica-neue", helvetica, arial;
+      }
+
+      section {
+        margin: 0 auto;
+        max-width: 600px;
+        position: relative;
+      }
+
+      input {
+        min-width: 100%;
+        font-size: 18px;
+        padding: 5px;
+        font-family: "helvetica-neue", helvetica, arial;
+      }
+      code {
+        font-size: 18px;
+      }
+
+      ul {
+        margin: 0;
+        list-style: none;
+        padding: 0;
+      }
+
+      li {
+        padding: 0;
+        margin: 0;
+        line-height: 30px;
+      }
+
+      li div.swatch {
+        display: inline-block;
+        width: 50px;
+        height: 30px;
+      }
+
+      li div.name {
+        display: inline-block;
+        padding-left: 10px;
+      }
+
+      p {
+        line-height: 1.4;
+      }
+
+    </style>
+
+  </head>
+  <body>
+    <section>
+      <h1>Color Namer</h1>
+      <input type="text" name="query" id="query" placeholder="Enter a color value">
+      <ul id="colors"></ul>
+    </section>
+  </body>
+</html>
+<body>

@@ -1,25 +1,34 @@
-var basicColors = require('./lib/html-colors');
-var htmlColors = require('./lib/html-colors');
-var distance = require('euclidean-distance');
-var chroma = require('chroma-js');
+"use strict";
 
-module.exports = function(color, candidates) {
+var presets = {
+  basic: require('./lib/basic-colors'),
+  html: require('./lib/html-colors')
+}
+var distance = require('euclidean-distance')
+var chroma = require('chroma-js')
+var color
 
-  if (!candidates) {
-    candidates = htmlColors;
-  } else if (!Array.isArray(candidates)) {
-    throw new Error("The second argument must be an array of color candidates");
+module.exports = function(color, names) {
+
+  if (!names)
+    names = "basic"
+
+  if (typeof(names) === "string")
+    names = presets[names]
+
+  if (!Array.isArray(names)) {
+    throw new Error("Invalid names " + JSON.stringify(names))
   }
 
-  var color = chroma(color)
+  color = chroma(color)
 
-  return candidates
-    .map (function(candidate) {
-      candidate.distance = distance(color.lab(), chroma(candidate.hex).lab())
-      return candidate;
+  return names
+    .map (function(name) {
+      name.distance = distance(color.lab(), chroma(name.hex).lab())
+      return name
     })
     .sort (function(a, b) {
-      return a.distance - b.distance;
-    });
+      return a.distance - b.distance
+    })
 
 }
