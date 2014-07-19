@@ -1,0 +1,85 @@
+fadeTime = 0.3s
+
+body
+  padding 20px
+  font-family "lato", "helvetica-neue", helvetica, arial
+  background #DDD
+  transition color fadeTime
+  transition background-color fadeTime
+
+// section
+//   margin 0 auto
+//   max-width 420px
+//   position relative
+
+form
+  float left
+  max-width 500px
+  margin-top 200px
+
+h1
+  padding-left 10px
+  margin 0
+
+input
+  min-width 100%
+  font-size 18px
+  padding 5px
+  font-family "lato", "helvetica-neue", helvetica, arial
+  font-weight bold
+  outline none
+  border none
+  transition color fadeTime
+  transition background fadeTime
+  background none
+  font-size 5rem
+
+  &::-webkit-input-placeholder
+    color rgba(black, 0.3)
+  &:-moz-placeholder
+    color rgba(black, 0.3)
+  &::-moz-placeholder
+     color rgba(black, 0.3)
+  &:-ms-input-placeholder
+     color rgba(black, 0.3)
+
+  &.white::-webkit-input-placeholder
+    color rgba(white, 0.3)
+  &.white:-moz-placeholder
+    color rgba(white, 0.3)
+  &.white::-moz-placeholder
+     color rgba(white, 0.3)
+  &.white:-ms-input-placeholder
+     color rgba(white, 0.3)
+
+
+ul
+  float left
+  max-width 500px
+  margin 0
+  list-style none
+  padding 0
+
+li
+  padding 0
+  margin 20px 0
+  line-height 30px
+  float none
+  clear both
+  overflow hidden
+  div
+    float left
+    &.swatch
+      width 100px
+      height 50px
+      // border 4px solid white
+      border-radius 4px
+    &.name
+      padding-left 20px
+      opacity 0.5
+      font-size 1.2rem
+      font-weight normal
+      line-height 50px
+
+p
+  line-height 1.4
