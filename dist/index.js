@@ -1,4 +1,4 @@
-"use strict";
+"use strict"
 
 function update() {
 
@@ -7,32 +7,39 @@ function update() {
 
   // Try to parse the input
   try {
-    var color = $("#query").val()
+    var color = colorNamer.chroma($("#query").val())
   } catch(e) {
     return console.log(e)
   }
 
+  // Change background color to query color
+  // Change text color to black or white depending on query color
   $("body").css({
-    backgroundColor: chroma(color).hex(),
-    color: (chroma(color).luminance() > 0.5) ? "black" : "white"
+    backgroundColor: color.hex(),
+    color: (color.luminance() > 0.5) ? "black" : "white"
   })
 
-  window.location.hash = chroma(color).hex();
-  document.title = "Names for " + chroma(color).hex();
+  // Add hex to URL fragment
+  window.location.hash = color.hex()
 
+  // Update page title
+  document.title = "Names for " + color.hex()
+
+  // Style input placeholder text color
   $("input").css({
-    color: (chroma(color).luminance() > 0.5) ? "black" : "white"
+    color: (color.luminance() > 0.5) ? "black" : "white"
   })
 
   // Toggle input placeholder color
-  $("#query").toggleClass("white", chroma(color).luminance() < 0.5)
+  $("#query").toggleClass("white", color.luminance() < 0.5)
 
-  var colors = colorNamer(color, 'html')
+  // Find color names
+  var colors = colorNamer(color.hex(), 'html')
 
-  colors.forEach(function(color) {
-    $("#colors").append(ich.color(color))
+  // Refresh list
+  colors.forEach(function(c) {
+    $("#colors").append(ich.color(c))
   })
-  console.log(colors)
 }
 
 $(function(){
@@ -40,7 +47,7 @@ $(function(){
   $("#query").on('change', update)
 
   $("form").on('submit', function(e) {
-    return false;
+    return false
   })
 
   if (window.location.hash) {
@@ -48,5 +55,4 @@ $(function(){
   }
 
   update()
-
 })

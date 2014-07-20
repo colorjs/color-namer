@@ -2,14 +2,15 @@
 
 var presets = {
   basic: require('./lib/colors/basic'),
-  roygbiv: require('./lib/colors/roygbiv'),
-  html: require('./lib/colors/html')
+  html: require('./lib/colors/html'),
+  pantone: require('./lib/colors/pantone'),
+  roygbiv: require('./lib/colors/roygbiv')
 }
+
 var distance = require('euclidean-distance')
 var chroma = require('chroma-js')
 var color
-
-module.exports = function(color, names) {
+var namer = module.exports = function(color, names) {
 
   if (!names)
     names = "basic"
@@ -33,3 +34,5 @@ module.exports = function(color, names) {
     })
 
 }
+
+namer.chroma = chroma
