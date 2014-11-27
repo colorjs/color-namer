@@ -104,4 +104,4 @@ npm test
 
 ## License
 
-[WTFPL](http://wtfpl.org/)
+MIT
