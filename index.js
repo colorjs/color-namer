@@ -1,40 +1,36 @@
 "use strict";
 
-var presets = {
+var distance = require('euclidean-distance')
+var chroma = require('chroma-js')
+var color
+var key
+
+// These `require` statements are all explicit
+// to keep the browserify build from breaking
+var lists = {
   basic: require('./lib/colors/basic'),
   html: require('./lib/colors/html'),
   ntc: require('./lib/colors/ntc'),
   pantone: require('./lib/colors/pantone'),
-  roygbiv: require('./lib/colors/roygbiv')
+  roygbiv: require('./lib/colors/roygbiv'),
+  x11: require('./lib/colors/x11')
 }
 
-var distance = require('euclidean-distance')
-var chroma = require('chroma-js')
-var color
-var namer = module.exports = function(color, names) {
-
-  if (!names)
-    names = "basic"
-
-  if (typeof(names) === "string")
-    names = presets[names]
-
-  if (!Array.isArray(names)) {
-    throw new Error("Invalid names " + JSON.stringify(names))
-  }
-
+var namer = module.exports = function(color) {
   color = chroma(color)
-
-  return names
-    .map (function(name) {
-      name.distance = distance(color.lab(), chroma(name.hex).lab())
-      return name
-    })
-    .sort (function(a, b) {
-      return a.distance - b.distance
-    })
-
+  var results = {}
+  for (key in lists) {
+    results[key] = lists[key]
+      .map (function(name) {
+        name.distance = distance(color.lab(), chroma(name.hex).lab())
+        return name
+      })
+      .sort (function(a, b) {
+        return a.distance - b.distance
+      })
+  }
+  return results
 }
 
 namer.chroma = chroma
-namer.presets = presets
+namer.lists = lists

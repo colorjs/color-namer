@@ -2,17 +2,28 @@
 
 > Give me a color and I'll name it.
 
-Color Namer is a node module that calculates color distance using the
+Color Namer is an npm package for use in Node.js or the browser that calculates color distance using the
 [Delta-E](http://www.colorwiki.com/wiki/Delta_E%3a_The_Color_Difference) color difference technique. Given a color
-in [some format](https://github.com/gka/chroma.js/blob/master/doc/api.md#chromaa-b-c-a-mode) like RGB, HSL, or HSV, it uses the awesome [chroma-js](https://npmjs.org/package/chroma-js)
-node module to convert the color to the [L*a*b* color space](http://en.wikipedia.org/wiki/Lab_color_space),
+in [Hexadecimal RGB, RGBA, HSL, or HSV format](https://github.com/gka/chroma.js/blob/master/doc/api.md#chromaa-b-c-a-mode), it converts the color to the [L*a*b* color space](http://en.wikipedia.org/wiki/Lab_color_space),
 then calculates the color's
 [Euclidean distance](https://npmjs.org/package/euclidean-distance) from a set of colors with
 known names.
 
-Mike Bostock of D3 fame [explains it well](https://gist.github.com/mbostock/3014589):
+Mike Bostock of [D3](http://d3js.org/) fame [explains it well](https://gist.github.com/mbostock/3014589):
 
 > Lab and HCL color spaces are special in that the perceived difference between two colors is proportional to their Euclidean distance in color space. This special property, called perceptual uniformity, makes them ideal for accurate visual encoding of data. In contrast, the more familiar RGB and HSL color spaces distort data when used for visualization.
+
+## Lists
+
+The color names are derived from several lists:
+
+- [roygbiv](lib/colors/roygbiv.js)
+- [basic](lib/colors/basic.js)
+- [html](lib/colors/html.js) - the HTML color names.
+- [x11](lib/colors/x11.js) - The list that preceded the HTML color names
+- [pantone](lib/colors/pantone.js)
+- [ntc](lib/colors/ntc.js), an [astounding collection](http://chir.ag/projects/ntc/) of over 1500 named colors.
+
 
 ## Installation
 
@@ -22,14 +33,25 @@ npm install color-namer --save
 
 ## Usage
 
-Easy peasy:
+Require the module:
 
 ```js
 var namer = require('color-namer')
 var names = namer("#FF0000")
 ```
 
-The function returns an array of colors objects, sorted by proximity in the [L*a*b* color space](http://en.wikipedia.org/wiki/Lab_color_space):
+From the above code, `names` will have a key for each list:
+
+```
+names.roygbiv
+names.basic
+names.html
+names.x11
+names.pantone
+names.ntc
+```
+
+Each list is an array of colors, sorted by their perceptual similarity to the given color:
 
 ```js
 [
@@ -64,35 +86,12 @@ The function returns an array of colors objects, sorted by proximity in the [L*a
 ]
 ```
 
-## Sets
-
-By default, names are chosen from a small set of [basic colors](/lib/basic-colors.js).
+Other input format work too like HSL, RGB, and RGBA:
 
 ```js
-// These are equivalent:
-namer("#FF0000")
-namer("#FF0000", 'basic')
-```
-
-To use the [HTML color names](/lib/html-colors.js):
-
-```js
-namer("#FF0000", 'html')
-```
-
-Or good ol' [ROYGBIV](http://en.wikipedia.org/wiki/Roy_G._Biv):
-
-```js
-namer("#FF0000", 'roygbiv')
-```
-
-Or bring your own name data:
-
-```js
-namer("#FF0000", [
-  { name: 'black', hex: '#000' },
-  { name: 'white', hex: '#FFF' }
-])
+name("hsl(50,100%,50%)")
+name("rgb(255,0,0)")
+name("rgba(255,0,0,1)")
 ```
 
 ## Tests

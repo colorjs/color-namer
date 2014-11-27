@@ -9,61 +9,61 @@ suite('namer', function () {
     assert.equal('function', typeof(namer))
   })
 
-  test('returns an array of candidates with distance values', function() {
+  test('returns an object containing named sorted arrays', function() {
     var names = namer('#ffa500')
-    assert(Array.isArray(names))
-    assert.equal(names[0].distance, 0)
-  })
-
-  test('defaults to basic color candidates', function() {
-    var names = namer('0000FF')
-    assert.equal(names.length, 21)
-  })
-
-  test('accepts custom color candidates', function() {
-    var candidates = [
-      { name: 'blue', hex: '#0000ff' },
-      { name: 'green', hex: '#008000' },
-      { name: 'yellow', hex: '#ffff00' }
-    ]
-    var names = namer('0000FF', candidates)
-    assert.equal(names.length, 3)
-  })
-
-  test('allows second argument to be a string specifying color set to use', function() {
-    var names = namer('0000F3', 'basic')
-    assert(names.length < 25)
-    assert.equal(names[0].name, "blue")
-  })
-
-  test('validates format of custom candidates', function() {
-    assert.throws(function() { namer("00CC00", "badness") })
+    assert(!Array.isArray(names))
+    assert(names.basic)
+    assert(names.html)
+    assert(names.ntc)
+    assert(names.pantone)
+    assert(names.roygbiv)
+    assert(names.x11)
+    assert.equal(names.basic[0].distance, 0)
   })
 
   test('matches inexact colors', function() {
     var names = namer('FF0001')
-    assert.equal(names[0].hex, '#FF0000')
-    assert.equal(names[0].name, 'red')
-    assert.equal(Math.floor(names[0].distance*100), 25)
+    assert.equal(names.basic[0].hex, '#FF0000')
+    assert.equal(names.basic[0].name, 'red')
+    assert.equal(Math.floor(names.basic[0].distance*100), 25)
   })
+
 
   test('matches exact colors', function() {
     var names = namer('0000FF')
-    assert.equal(names[0].hex, '#0000FF')
-    assert.equal(names[0].name, 'blue')
-    assert.equal(names[0].distance, 0)
+    assert.equal(names.basic[0].hex, '#0000FF')
+    assert.equal(names.basic[0].name, 'blue')
+    assert.equal(names.basic[0].distance, 0)
   })
 
   test('accepts hex strings that include a hash symbol', function() {
     var names = namer('#0000FF')
-    assert.equal(names[0].hex, '#0000FF')
-    assert.equal(names[0].name, 'blue')
-    assert.equal(names[0].distance, 0)
+    assert.equal(names.basic[0].hex, '#0000FF')
+    assert.equal(names.basic[0].name, 'blue')
+    assert.equal(names.basic[0].distance, 0)
   })
 
   test('accepts HSL input', function() {
     var names = namer("hsl(50,100%,50%)")
-    assert.equal(names[0].name, 'gold')
+    assert.equal(names.basic[0].name, 'gold')
+  })
+
+
+  suite('lists', function() {
+
+    test('are available as a property of the exported module', function() {
+      assert(namer.lists)
+    })
+
+    test('are arrays of objects with keys `name` and `hex`', function() {
+      for (var list in namer.lists) {
+        namer.lists[list].forEach(function(color){
+          assert(color.name);
+          assert(color.hex);
+        })
+      }
+    })
+
   })
 
 })
