@@ -10,6 +10,10 @@ then calculates the color's
 [Euclidean distance](https://npmjs.org/package/euclidean-distance) from a set of colors with
 known names.
 
+Mike Bostock of D3 fame [explains it well](https://gist.github.com/mbostock/3014589):
+
+> Lab and HCL color spaces are special in that the perceived difference between two colors is proportional to their Euclidean distance in color space. This special property, called perceptual uniformity, makes them ideal for accurate visual encoding of data. In contrast, the more familiar RGB and HSL color spaces distort data when used for visualization.
+
 ## Installation
 
 ```
