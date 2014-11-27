@@ -3,6 +3,7 @@
 var presets = {
   basic: require('./lib/colors/basic'),
   html: require('./lib/colors/html'),
+  ntc: require('./lib/colors/ntc'),
   pantone: require('./lib/colors/pantone'),
   roygbiv: require('./lib/colors/roygbiv')
 }
@@ -36,3 +37,4 @@ var namer = module.exports = function(color, names) {
 }
 
 namer.chroma = chroma
+namer.presets = presets

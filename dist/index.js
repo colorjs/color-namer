@@ -9,7 +9,7 @@ function update() {
   try {
     var color = colorNamer.chroma($("#query").val())
   } catch(e) {
-    return console.log(e)
+    return console.error(e)
   }
 
   // Change background color to query color
@@ -34,7 +34,7 @@ function update() {
   $("#query").toggleClass("white", color.luminance() < 0.5)
 
   // Find color names
-  var colors = colorNamer(color.hex(), 'html')
+  var colors = colorNamer(color.hex(), 'ntc')
 
   // Refresh list
   colors.forEach(function(c) {
