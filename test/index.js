@@ -15,7 +15,7 @@ suite('namer', function () {
     assert.equal(names[0].distance, 0)
   })
 
-  test('defaults to HTML color candidates', function() {
+  test('defaults to basic color candidates', function() {
     var names = namer('0000FF')
     assert.equal(names.length, 21)
   })
@@ -61,7 +61,7 @@ suite('namer', function () {
     assert.equal(names[0].distance, 0)
   })
 
-  test('accepts non-hex input formats', function() {
+  test('accepts HSL input', function() {
     var names = namer("hsl(50,100%,50%)")
     assert.equal(names[0].name, 'gold')
   })
