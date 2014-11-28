@@ -1,0 +1,30 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="keywords" content="piknik, color, colour, color picker, colour picker">
+  <meta name="description" content="Piknik is a simple yet gorgeous color picker tool, brilliant when you need to see your color in full screen.">
+  <title>Piknik Color Picker</title>
+  <style type="text/css" media="screen">
+  @import url(picker.css);
+  </style>
+  <script src="ZeroClipboard.js" type="text/javascript"></script>
+  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js" type="text/javascript"></script>
+  <script src="jquery.mousewheel.min.js" type="text/javascript"></script>
+  <script src="picker.js" type="text/javascript"></script>
+</head>
+<body>
+
+  <div id="color">
+    <!--[if IE]><p>Oh, you're using Internet Explorer? My condolences. This won't work at all, I'm afraid.</p><![endif]-->
+    <p>Click anywhere to lock color — Scroll to change luminosity — Click values to copy</p>
+    <ul>
+      <li id="rgb">rgb(<span id="r"></span>,<span id="g"></span>,<span id="b"></span>)</li>
+      <li id="hex">hex(<span id="hexval"></span>)</li>
+      <li id="hsl">hsl(<span id="h"></span>,<span id="s"></span>,<span id="l"></span>)</li>
+    </ul>
+  </div>
+
+</body>
+</html>

@@ -1,0 +1,93 @@
+
+body {
+  background-color: hsl(40,50%,50%);
+  font-family: HelveticaNeue-Light, 'Helvetica Neue Light', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  font-weight: 200;
+}
+
+a {
+  color: white;
+  text-decoration: none;
+}
+
+#logo {
+  font-family: HelveticaNeue-UltraLight, 'Helvetica Neue UltraLight', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  font-weight: 100;
+  font-size: 60px;
+  letter-spacing: 4px;
+  text-align: center;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+
+#color {
+  position: absolute;
+  left: 50%;
+  bottom: 50px;
+  width: 840px;
+  padding: 5px 0 20px 0;
+  margin-left: -400px;
+  background-color: black;
+  -webkit-border-radius: 30px;
+  -moz-border-radius: 30px;
+  opacity: 0.2;
+  color: white;
+  text-align: center;
+  font-size: 30px;
+  /* display: none; */
+}
+
+#color:hover, #color.hover {
+  opacity: 0.5;
+}
+
+#color .twitter-share-button {
+  opacity: 0.3;
+}
+
+#color:hover .twitter-share-button, #color.hover .twitter-share-button {
+  opacity: 1;
+}
+
+#color li span {
+  font-family: HelveticaNeue-Light, 'Helvetica Neue Light', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  font-weight: 200;
+}
+
+#color ul, #color li {
+  padding-left: 25px;
+  margin: 0;
+}
+
+#color li {
+  font-family: HelveticaNeue-UltraLight, 'Helvetica Neue UltraLight', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  font-weight: 100;
+  position: relative;
+  padding: 0;
+  margin: 0;
+  list-style-type: none;
+  display: block;
+  width: 255px;
+  float: left;
+  text-align: center;
+  height: 38px;
+}
+
+#color li.hover, #color li:hover {
+  background-color: white;
+  color: black;
+  -webkit-border-radius: 15px;
+  -moz-border-radius: 15px ;
+}
+
+#hexval  {
+  text-transform: uppercase;
+}
+
+#color p {
+  margin: 0;
+  padding: 0 50px;
+  font-size: 15px;
+  line-height: 35px;
+}
