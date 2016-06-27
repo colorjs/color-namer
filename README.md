@@ -1,4 +1,4 @@
-# Color Namer
+# Color Namer [![Build Status](https://travis-ci.org/zeke/color-namer.svg?branch=master)](https://travis-ci.org/zeke/color-namer)
 
 > Give me a color and I'll name it.
 
