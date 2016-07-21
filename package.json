@@ -2,6 +2,7 @@
   "name": "color-namer",
   "version": "1.1.0",
   "description": "Give me a color and I'll name it.",
+  "repository": "https://github.com/zeke/color-namer",
   "main": "index.js",
   "scripts": {
     "test": "mocha",
@@ -32,14 +33,7 @@
   },
   "dependencies": {
     "chroma-js": "~0.5.2",
-    "euclidean-distance": "~0.1.0"
-  },
-  "bugs": {
-    "url": "https://github.com/zeke/color-namer/issues"
-  },
-  "homepage": "https://github.com/zeke/color-namer",
-  "repository": {
-    "type": "git",
-    "url": "git://github.com/zeke/color-namer.git"
+    "euclidean-distance": "~0.1.0",
+    "require-dir": "^0.3.0"
   }
 }
