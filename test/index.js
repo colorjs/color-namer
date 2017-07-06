@@ -66,4 +66,30 @@ suite('namer', function () {
 
   })
 
+  suite('options', function() {
+
+    test('can receive an empty object', function() {
+      var names = namer("hsl(50,100%,50%)", {})
+      assert.equal(names.basic[0].name, 'gold')
+    })
+
+    test('can receive `pick` option', function() {
+      var names = namer("hsl(50,100%,50%)", { pick: ['basic', 'pantone'] })
+      assert(Array.isArray(names.basic))
+      assert(Array.isArray(names.pantone))
+      assert.equal(Object.keys(names).length, 2)
+      assert.equal(names.html, undefined)
+      assert.equal(names.roygbiv, undefined)
+    })
+
+    test('can receive `omit` option', function() {
+      var names = namer("hsl(50,100%,50%)", { omit: ['basic', 'pantone'] })
+      assert(Array.isArray(names.html))
+      assert(Array.isArray(names.roygbiv))
+      assert.equal(Object.keys(names).length, Object.keys(namer.lists).length - 2)
+      assert.equal(names.basic, undefined)
+      assert.equal(names.pantone, undefined)
+    })
+  })
+
 })
