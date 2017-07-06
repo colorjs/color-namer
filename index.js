@@ -1,6 +1,5 @@
 "use strict";
 
-var distance = require('euclidean-distance')
 var chroma = require('chroma-js')
 var color
 var key
@@ -22,7 +21,7 @@ var namer = module.exports = function(color) {
   for (key in lists) {
     results[key] = lists[key]
       .map (function(name) {
-        name.distance = distance(color.lab(), chroma(name.hex).lab())
+        name.distance = chroma.distance(color, chroma(name.hex))
         return name
       })
       .sort (function(a, b) {
