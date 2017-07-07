@@ -1,8 +1,6 @@
 "use strict";
 
 var chroma = require('chroma-js')
-var color
-var key
 
 // These `require` statements are all explicit
 // to keep the browserify build from breaking
@@ -15,10 +13,18 @@ var lists = {
   x11: require('./lib/colors/x11')
 }
 
-var namer = module.exports = function(color) {
+var namer = module.exports = function(color, options) {
+  options = options || {}
+
   color = chroma(color)
   var results = {}
-  for (key in lists) {
+  for (var key in lists) {
+    if (options.pick && options.pick.indexOf(key) === -1) {
+      continue
+    }
+    if (options.omit && options.omit.indexOf(key) !== -1) {
+      continue
+    }
     results[key] = lists[key]
       .map (function(name) {
         name.distance = chroma.distance(color, chroma(name.hex))

@@ -94,6 +94,24 @@ name("rgb(255,0,0)")
 name("rgba(255,0,0,1)")
 ```
 
+## Options
+
+### options.pick
+This option allows us to derive names from the dedicated lists for faster computation.
+
+```js
+var names = namer(color, { pick: ['basic', 'x11'] })
+// output: { basic: [...], x11: [...] }
+```
+
+### options.omit
+The opposite of `options.pick`.
+
+```js
+var names = namer(color, { omit: ['pantone', 'roygbiv'] })
+// output: { basic: [...], html: [...], x11: [...], ntc: [...] }
+```
+
 ## Tests
 
 ```
