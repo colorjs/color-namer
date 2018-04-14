@@ -2,7 +2,7 @@
   "name": "color-namer",
   "version": "1.3.0",
   "description": "Give me a color and I'll name it.",
-  "repository": "https://github.com/zeke/color-namer",
+  "repository": "https://github.com/colorjs/color-namer",
   "main": "index.js",
   "scripts": {
     "test": "mocha",
