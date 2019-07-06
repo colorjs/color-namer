@@ -17,7 +17,7 @@ let cache = new WeakMap()
 var namer = module.exports = function(color, options) {
   options = options || {}
 
-  const cacheKey = JSON.stringify({color, options});
+  const cacheKey = {color, options}
   if (cache.has(cacheKey)) {
     return cache.get(cacheKey);
   }
