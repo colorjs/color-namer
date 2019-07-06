@@ -19,7 +19,7 @@ var namer = module.exports = function(color, options) {
 
   const cacheKey = {color, options}
   if (cache.has(cacheKey)) {
-    return cache.get(cacheKey);
+    return cache.get(cacheKey)
   }
 
   color = chroma(color)
