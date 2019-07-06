@@ -13,8 +13,14 @@ var lists = {
   x11: require('./lib/colors/x11')
 }
 
+let cache = new WeakMap()
 var namer = module.exports = function(color, options) {
   options = options || {}
+
+  const cacheKey = JSON.stringify({color, options});
+  if (cache.has(cacheKey)) {
+    return cache.get(cacheKey);
+  }
 
   color = chroma(color)
   var results = {}
@@ -27,13 +33,14 @@ var namer = module.exports = function(color, options) {
     }
     results[key] = lists[key]
       .map (function(name) {
-        name.distance = chroma.distance(color, chroma(name.hex))
+        name.distance = chroma.deltaE(color, chroma(name.hex))
         return name
       })
       .sort (function(a, b) {
         return a.distance - b.distance
       })
   }
+  cache.set(cacheKey, results)
   return results
 }
 
