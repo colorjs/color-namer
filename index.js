@@ -1,6 +1,7 @@
 "use strict";
 
 var chroma = require('chroma-js')
+var WeakMap = require("es6-weak-map")
 
 // These `require` statements are all explicit
 // to keep the browserify build from breaking
@@ -13,11 +14,11 @@ var lists = {
   x11: require('./lib/colors/x11')
 }
 
-let cache = new WeakMap()
+var cache = new WeakMap()
 var namer = module.exports = function(color, options) {
   options = options || {}
 
-  const cacheKey = {color, options}
+  var cacheKey = {color, options}
   if (cache.has(cacheKey)) {
     return cache.get(cacheKey)
   }
@@ -33,7 +34,7 @@ var namer = module.exports = function(color, options) {
     }
     results[key] = lists[key]
       .map (function(name) {
-        name.distance = chroma.deltaE(color, chroma(name.hex))
+        name.distance = options.distance === 'deltaE' ? chroma.deltaE(color, chroma(name.hex)) : chroma.distance(color, chroma(name.hex))
         return name
       })
       .sort (function(a, b) {
