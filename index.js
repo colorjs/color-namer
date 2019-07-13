@@ -23,6 +23,7 @@ var namer = module.exports = function(color, options) {
     return cache.get(cacheKey)
   }
 
+  var deltaE = String(options.distance).toLowerCase() === 'deltae';
   color = chroma(color)
   var results = {}
   for (var key in lists) {
@@ -34,7 +35,7 @@ var namer = module.exports = function(color, options) {
     }
     results[key] = lists[key]
       .map (function(name) {
-        name.distance = options.distance === 'deltaE' ? chroma.deltaE(color, chroma(name.hex)) : chroma.distance(color, chroma(name.hex))
+        name.distance = deltaE ? chroma.deltaE(color, chroma(name.hex)) : chroma.distance(color, chroma(name.hex))
         return name
       })
       .sort (function(a, b) {

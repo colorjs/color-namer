@@ -112,6 +112,16 @@ var names = namer(color, { omit: ['pantone', 'roygbiv'] })
 // output: { basic: [...], html: [...], x11: [...], ntc: [...] }
 ```
 
+### options.distance
+If 'deltaE', use the [Delta-E](http://zschuessler.github.io/DeltaE/learn/) distance function, otherwise uses default distance function.
+
+```js
+var names = namer(color, { pick: ['basic'], distance: 'deltaE' });
+// output: { basic: [...] }
+```
+
+### 
+
 ## Tests
 
 ```
