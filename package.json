@@ -1,6 +1,6 @@
 {
   "name": "color-namer",
-  "version": "1.3.0",
+  "version": "1.4.0",
   "description": "Give me a color and I'll name it.",
   "repository": "https://github.com/colorjs/color-namer",
   "main": "index.js",
