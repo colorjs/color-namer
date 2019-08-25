@@ -21,6 +21,13 @@ suite('namer', function () {
     assert.equal(names.basic[0].distance, 0)
   })
 
+  test('matches inexact colors with deltaE', function() {
+    var names = namer('FF0001', { distance: 'deltaE' })
+    assert.equal(names.basic[0].hex, '#FF0000')
+    assert.equal(names.basic[0].name, 'red')
+    assert.equal(Math.floor(names.basic[0].distance*100), 13)
+  })
+
   test('matches inexact colors', function() {
     var names = namer('FF0001')
     assert.equal(names.basic[0].hex, '#FF0000')
